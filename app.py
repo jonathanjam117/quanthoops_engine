@@ -183,6 +183,10 @@ with st.sidebar:
     api_key_input = st.text_input("The Odds API Key", value=env_odds_key, type="password")
 
     st.markdown("---")
+    if st.sidebar.button("🔄 Actualizar Cuotas (API)", use_container_width=True):
+        st.cache_data.clear()
+        st.rerun()
+
     st.caption("QuantHoops AI v1.0 • Motor Bivariado Gaussiano • Steam Chasing")
 
 # ==============================================================================
@@ -200,6 +204,9 @@ with col_top2:
     st.write("")
     st.write("")
     refresh_btn = st.button("🔄 Actualizar Cuotas", use_container_width=True)
+    if refresh_btn:
+        st.cache_data.clear()
+        st.rerun()
 
 league_meta = BASKETBALL_SPORTS[selected_league_key]
 
